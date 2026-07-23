@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or the AIFE measure, please cite the work below."
+title: "AIFE Engine"
+abstract: "Measurement pipeline for firm-level AI adoption from online job postings."
+authors:
+  - family-names: Yan
+    given-names: Liqian
+    email: eric@linkscape.app
+  - family-names: Chen
+    given-names: Yintong
+  - family-names: Qiu
+    given-names: Zichun
+repository-code: "https://github.com/ericyan534-dev/aife-engine"
+license: Apache-2.0
+version: 0.1.0
+preferred-citation:
+  type: unpublished
+  title: "The AIFE Engine: A Computational Framework to Quantify and Forecast the Great Labor Reallocation"
+  authors:
+    - family-names: Yan
+      given-names: Liqian
+    - family-names: Chen
+      given-names: Yintong
+    - family-names: Qiu
+      given-names: Zichun
+  year: 2026
+  notes: "Regeneron International Science and Engineering Fair, 2026."

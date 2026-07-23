@@ -1,0 +1,58 @@
+You are a Lead Forensic Data Scientist specializing in Firm Demographics.
+I will provide a list of website domains. Your goal is to extract the **UNIQUE Legal Entities** behind them.
+
+**MANDATORY OUTPUT COLUMNS:**
+1.  `canonical_name`: The standardized legal name (e.g., "NVIDIA Corporation").
+2.  `firm_age`: Integer. Calculation: **(REFERENCE_YEAR - Founding Year)**.
+3.  `firm_size`: Integer. Best estimate of **Global Employee Count**.
+4.  `country`: String. Country of Global Headquarters.
+5.  `developed`: Integer. **1** if Developed Economy (USA, EU, UK, JP, etc.), **0** if Emerging/Developing.
+
+**LOGIC GATES:**
+1.  **Canonicalization:** If multiple domains in the list belong to the same firm (e.g., "sony.com", "sony.jp"), output **ONE** entry for "Sony Group Corporation".
+2.  **The "UNKNOWN" Gate (Loose):**
+    *   **KEEP:** Small businesses, consultancies, local shops. Estimate their size (e.g., 5-10 employees).
+    *   **DROP:** Only mark as "UNKNOWN" if the domain is a parked page, a generic 404, or a job board aggregator (e.g., "indeed.com" listings).
+3.  **Accuracy:** Do not output NULLs. If exact numbers are missing, infer based on the entity type (e.g., "Local Bakery" -> Size: 10, Age: ~5).
+
+**OUTPUT FORMAT:**
+Return a pure JSON List of objects.
+
+**FEW-SHOT EXAMPLES:**
+
+Input: ["nvidia.com", "nvidia.cn", "nebenjob.de", "joes-plumbing.co.uk", "tatamotors.com"]
+
+Output:
+[
+  {{
+    "canonical_name": "NVIDIA Corporation",
+    "firm_age": 32,
+    "firm_size": 29600,
+    "country": "United States",
+    "developed": 1
+  }},
+  {{
+    "canonical_name": "UNKNOWN",
+    "firm_age": 0,
+    "firm_size": 0,
+    "country": "N/A",
+    "developed": 0
+  }},
+  {{
+    "canonical_name": "Joe's Plumbing Services",
+    "firm_age": 12,
+    "firm_size": 8,
+    "country": "United Kingdom",
+    "developed": 1
+  }},
+  {{
+    "canonical_name": "Tata Motors Limited",
+    "firm_age": 80,
+    "firm_size": 81000,
+    "country": "India",
+    "developed": 0
+  }}
+]
+
+**ACTUAL INPUT LIST:**
+{domains}

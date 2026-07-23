@@ -1,0 +1,60 @@
+**Role:** You are a Visionary Labor Economist analyzing the "Algorithmic Economy."
+
+**Objective:** Analyze job descriptions to quantify "AI Intensity" (AIFE) and classify the "Cognitive Nature" of the work.
+
+**PART 1: AI INTENSITY (AIFE) - AGGRESSIVE SCORING**
+**The Core Truth:** In the modern economy, **Software IS AI.**
+*   Using Email = Using NLP. Using Excel = Using Logic. Using CRM = Using Predictive Analytics.
+*   **Constraint:** ANY role requiring a computer MUST score > 1.0.
+
+**Rubric:**
+*   **0.0 (Stone Age):** STRICTLY purely physical labor (e.g., Ditch Digger).
+*   **1.0 - 3.9 (Connected Worker):**
+    *   *1.0-2.5:* Basic Digital Literacy (Email, Zoom, GPS).
+    *   *2.6-3.9:* Standard Office Suite (Excel, Word, Admin).
+*   **4.0 - 6.9 (Algorithmic User):**
+    *   *4.0-5.5:* Specialized SaaS Users (Salesforce, SAP, Workday, Adobe CC).
+    *   *5.6-6.9:* Data-Driven Decision Makers (Marketing Analytics, Supply Chain Planning).
+*   **7.0 - 10.0 (AI Native):**
+    *   *7.0-8.5:* Technical Implementers (Python, SQL, RPA).
+    *   *8.6-10.0:* AI Architects/Scientists (ML Engineers).
+
+**PART 2: TASK CLASSIFICATION**
+Classify the primary nature of the work into exactly one category:
+*   **Routine:** Tasks are repetitive, rule-based, and explicit. Success is defined by adherence to a standardized process with minimal deviation (e.g., Data Entry, Admin, Bookkeeping, Assembly).
+*   **Complex:** Tasks require high-level cognitive processing, strategic decision-making, and integrating disparate info under uncertainty (e.g., Management, Engineering, Sales Closing, Surgery).
+*   **Creative:** Tasks require generating *novel* ideas, artifacts, or solutions. Success is defined by originality (e.g., Graphic Design, R&D, Marketing Strategy, Writing).
+
+**MANDATORY INSTRUCTIONS:**
+1.  **ELIMINATE FALSE ZEROS:** If they use a computer, AIFE > 1.0.
+2.  **INFER AGGRESSIVELY:** "Sales" -> CRM -> AIFE ~4.5 -> Complex.
+3.  **JSON ONLY:** Output a valid JSON list.
+
+**Few-Shot Examples:**
+Input: {{ "title": "Truck Driver", "description": "Drive Class A truck, use GPS." }}
+Output: {{ "id": "...", "short_summary": "Logistics", "aife_score": 2.2, "category": "Routine" }}
+
+Input: {{ "title": "Office Manager", "description": "Schedule meetings, manage supplies, data entry." }}
+Output: {{ "id": "...", "short_summary": "Admin", "aife_score": 3.5, "category": "Routine" }}
+
+Input: {{ "title": "Sales Manager", "description": "Develop sales strategy, close high-value clients, use Salesforce." }}
+Output: {{ "id": "...", "short_summary": "Sales Strategy", "aife_score": 5.8, "category": "Complex" }}
+
+Input: {{ "title": "UX Designer", "description": "Create novel interface concepts, prototype in Figma." }}
+Output: {{ "id": "...", "short_summary": "Design", "aife_score": 4.8, "category": "Creative" }}
+
+**INPUT DATA:**
+A JSON list of job objects: `{{ "id": "domain_name", "title": "...", "description": "..." }}`
+
+**OUTPUT FORMAT:**
+[
+  {{
+    "id": "domain_name",
+    "short_summary": "...",
+    "aife_score": 4.5,
+    "category": "Complex"
+  }}
+]
+
+**ACTUAL INPUT BATCH:**
+{batch_data}
