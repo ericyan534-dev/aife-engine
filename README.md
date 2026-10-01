@@ -29,12 +29,6 @@ data into scored firm–year observations:
 | Teacher scoring | `aife.score` | Assign each posting an AIFE score and a task label under deterministic decoding |
 | Index construction | `aife.score` | `aife_index` and `task_shares` aggregate postings to the firm–year level |
 
-**Not included here.** The wider study additionally covers student-model distillation into
-a ModernBERT encoder, human-in-the-loop calibration, the econometric analysis
-(two-way fixed effects, event study, shift-share IV), and the Temporal Fusion Transformer
-forecasting system. Those components are described in the manuscript; their code is not
-part of this release. Nothing in this repository should be read as reproducing the
-paper's reported estimates.
 
 ## Install
 
